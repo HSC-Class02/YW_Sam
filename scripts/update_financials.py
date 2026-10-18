@@ -120,8 +120,10 @@ CSV_FIELDS = [
     "operating_cashflow_to_sales_pct",
 ]
 
-def amount_value(row: dict[str, Any]) -> float | None:
-    for field in ("thstrm_amount", "thstrm_add_amount"):
+def amount_value(row: dict[str, Any], cumulative: bool = False) -> float | None:
+    # Interim income and cash-flow statements need year-to-date values for deriving quarters.
+    fields = ("thstrm_add_amount", "thstrm_amount") if cumulative else ("thstrm_amount", "thstrm_add_amount")
+    for field in fields:
         raw = row.get(field)
         if raw is None or str(raw).strip() in ("", "-", "—", "N/A"):
             continue
@@ -144,14 +146,14 @@ def get_field(rows: list[dict[str, Any]], metric: str) -> float | None:
     for alias in aliases:
         for row in search_rows:
             if str(row.get("account_nm", "")).strip() == alias:
-                value = amount_value(row)
+                value = amount_value(row, cumulative=metric in FLOW_FIELDS)
                 if value is not None:
                     return value
     for alias in aliases:
         for row in search_rows:
             account_name = str(row.get("account_nm", "")).strip()
             if alias and alias in account_name:
-                value = amount_value(row)
+                value = amount_value(row, cumulative=metric in FLOW_FIELDS)
                 if value is not None:
                     return value
     return None
