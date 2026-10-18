@@ -24,11 +24,11 @@ a{color:var(--blue);text-decoration:none}.wrap{max-width:1460px;margin:0 auto;pa
 table{border-collapse:separate;border-spacing:0;width:100%;font-size:11px;white-space:nowrap}thead th{position:sticky;top:0;background:#eef3f9;color:#435974;font-weight:800;text-align:right;padding:11px 13px;border-bottom:1px solid var(--line);z-index:1}thead th:first-child,tbody td:first-child{text-align:left;position:sticky;left:0;z-index:2}thead th:first-child{z-index:3;background:#e8eff7}tbody td{padding:10px 13px;border-bottom:1px solid #edf1f6;text-align:right;font-variant-numeric:tabular-nums}tbody tr:nth-child(even){background:#fafbfd}tbody td:first-child{background:inherit;font-weight:700;color:var(--navy)}tbody tr:last-child td{border-bottom:0}.empty-cell{text-align:center!important;padding:26px!important;color:var(--muted)!important;font-weight:500!important}
 .peer-intro{font-size:12px;color:var(--muted);margin:0 0 13px}.peer-table{white-space:normal}.peer-table th:first-child,.peer-table td:first-child{position:static;text-align:left}.peer-table td{text-align:left;white-space:normal}.peer-table a{font-weight:700}
 .footer{border-top:1px solid var(--line);margin-top:36px;padding:20px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer a{font-weight:700}
-.float-tools{position:fixed;right:18px;top:34%;z-index:50;width:160px;background:#fff;border:1px solid #d9e3ed;border-radius:16px;box-shadow:0 12px 34px #10253f26;padding:12px}.tools-title{font-size:11px;color:#6e7f93;font-weight:800;letter-spacing:.06em;margin:2px 4px 10px}.tool-btn{border:0;display:flex;align-items:center;justify-content:center;gap:7px;width:100%;background:var(--navy);color:white;padding:10px 9px;border-radius:10px;margin:7px 0;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer}.tool-btn.secondary{background:#eef3f9;color:var(--navy);border:1px solid #dfe7f0}.tool-btn:hover{filter:brightness(1.08)}.tool-select{font:inherit;width:100%;border:1px solid #d8e2ed;border-radius:9px;padding:9px 7px;font-size:11px;background:#fff;color:var(--ink)}.tool-help{font-size:10px;color:var(--muted);line-height:1.5;margin:9px 4px 3px}
+.download-toolbar{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 5px 18px #203c5d08;padding:18px 20px;margin:22px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.download-toolbar-heading{font-size:13px;color:var(--navy);font-weight:800;margin-right:8px}.tool-label{font-size:11px;font-weight:800;color:#6e7f93}.tool-btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--navy);color:white;padding:10px 14px;border-radius:10px;margin:0;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}.tool-btn.secondary{background:#eef3f9;color:var(--navy);border:1px solid #dfe7f0}.tool-btn:hover{filter:brightness(1.08)}.tool-select{font:inherit;min-width:160px;border:1px solid #d8e2ed;border-radius:9px;padding:10px 9px;font-size:11px;background:#fff;color:var(--ink)}.download-toolbar-help{flex-basis:100%;font-size:11px;color:var(--muted);line-height:1.5;margin-top:0}
 .badge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;background:#e4f4ed;color:#13775d}
-@media(max-width:1120px){.float-tools{right:10px;width:144px}.wrap{padding-left:18px;padding-right:18px}.hero-inner{padding:0 18px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.hero-inner{display:block}.hero-meta{text-align:left;margin-top:18px}.chart-grid{grid-template-columns:1fr}.chart-card.wide{grid-column:auto}.float-tools{top:auto;bottom:10px;right:10px;width:184px;padding:8px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}.tools-title{display:none}.float-tools .tool-btn{width:auto;flex:1;margin:0;padding:9px 7px}.tool-select{width:100%;order:3}.tool-help{display:none}.wrap{padding-bottom:115px}.section-head{align-items:flex-start;flex-direction:column}.status-line{text-align:left}}
-@media print{body{background:#fff!important;color:#111}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact;padding:18px 0}.wrap{max-width:none;padding:0 8px 20px}.hero-inner{max-width:none;padding:0 8px}.float-tools{display:none!important}.kpi-grid{grid-template-columns:repeat(4,1fr);gap:8px}.kpi,.chart-card,.table-card{box-shadow:none;break-inside:avoid;border-color:#d7dce3}.chart-grid{grid-template-columns:repeat(2,1fr)}.chart-wrap{height:190px}.table-scroll{max-height:none;overflow:visible}table{font-size:7px;white-space:normal}thead th,tbody td{padding:5px 4px;position:static!important}section{break-inside:auto}.table-card{break-inside:avoid}.footer{margin-top:18px}.peer-table{font-size:9px}.section-head{margin:18px 0 10px}}
+@media(max-width:1120px){.wrap{padding-left:18px;padding-right:18px}.hero-inner{padding:0 18px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.hero-inner{display:block}.hero-meta{text-align:left;margin-top:18px}.chart-grid{grid-template-columns:1fr}.chart-card.wide{grid-column:auto}.download-toolbar{align-items:stretch;gap:9px}.download-toolbar-heading{flex-basis:100%}.download-toolbar .tool-btn,.download-toolbar .tool-select{width:100%;flex:1}.tool-select{min-width:0}.wrap{padding-bottom:40px}.section-head{align-items:flex-start;flex-direction:column}.status-line{text-align:left}}
+@media print{body{background:#fff!important;color:#111}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact;padding:18px 0}.wrap{max-width:none;padding:0 8px 20px}.hero-inner{max-width:none;padding:0 8px}.download-toolbar{display:none!important}.kpi-grid{grid-template-columns:repeat(4,1fr);gap:8px}.kpi,.chart-card,.table-card{box-shadow:none;break-inside:avoid;border-color:#d7dce3}.chart-grid{grid-template-columns:repeat(2,1fr)}.chart-wrap{height:190px}.table-scroll{max-height:none;overflow:visible}table{font-size:7px;white-space:normal}thead th,tbody td{padding:5px 4px;position:static!important}section{break-inside:auto}.table-card{break-inside:avoid}.footer{margin-top:18px}.peer-table{font-size:9px}.section-head{margin:18px 0 10px}}
 </style>
 </head>
 <body>
@@ -85,6 +85,19 @@ table{border-collapse:separate;border-spacing:0;width:100%;font-size:11px;white-
 
   <div class="note">해석 유의사항: 원천금액은 원 단위이며 그래프·카드에서는 조 원 단위로 환산합니다. 분기 손익·현금흐름은 해당 분기 누적공시 간 차이로 계산하고, 자산·부채·자본은 각 분기말 보고값을 사용합니다. 분기 수익성 지표는 연환산하지 않습니다. OpenDART에 해당 기간 자료가 없거나 원천 계정 매핑이 불가능한 값은 공란으로 남깁니다.</div>
 
+  <section class="download-toolbar" aria-label="대시보드 다운로드 도구">
+    <div class="download-toolbar-heading">데이터 내보내기</div>
+    <button type="button" class="tool-btn" id="pdf-btn" title="인쇄 창에서 PDF로 저장">▤ PDF 저장</button>
+    <label for="excel-period" class="tool-label">Excel 기간</label>
+    <select id="excel-period" class="tool-select" aria-label="엑셀 데이터 기간 선택">
+      <option value="annual">연간 (Annual)</option>
+      <option value="halfyear">반기 (Half-year)</option>
+      <option value="quarterly">분기 (Quarterly)</option>
+    </select>
+    <button type="button" class="tool-btn secondary" id="excel-btn">▦ Excel 다운로드</button>
+    <div class="download-toolbar-help">PDF 저장은 인쇄 창에서 “PDF로 저장”을 선택합니다. Excel은 선택한 기간의 재무수치와 비율을 내보냅니다.</div>
+  </section>
+
   <section id="annual-section">
     <div class="section-head"><div><h2>Annual · 연간 재무 데이터</h2><p>사업보고서 기준 주요 손익·재무상태·현금흐름 및 재무비율</p></div></div>
     <div class="table-card"><div class="table-title"><h3>연간 주요 재무수치</h3><span id="annual-count">0 records</span></div><div class="table-scroll"><table id="annual-table"></table></div></div>
@@ -125,18 +138,7 @@ table{border-collapse:separate;border-spacing:0;width:100%;font-size:11px;white-
   </footer>
 </main>
 
-<aside class="float-tools" aria-label="대시보드 다운로드 도구">
-  <div class="tools-title">EXPORT / DOWNLOAD</div>
-  <button type="button" class="tool-btn" id="pdf-btn" title="인쇄 창에서 PDF로 저장">▤ &nbsp; PDF 저장</button>
-  <label for="excel-period" style="font-size:10px;font-weight:800;color:#6e7f93;display:block;margin:10px 3px 5px">Excel 데이터 기간</label>
-  <select id="excel-period" class="tool-select" aria-label="엑셀 데이터 기간 선택">
-    <option value="annual">연간 (Annual)</option>
-    <option value="halfyear">반기 (Half-year)</option>
-    <option value="quarterly">분기 (Quarterly)</option>
-  </select>
-  <button type="button" class="tool-btn secondary" id="excel-btn">▦ &nbsp; Excel 다운로드</button>
-  <div class="tool-help">PDF 저장을 누른 뒤 인쇄 창에서 “PDF로 저장”을 선택하세요. Excel은 선택한 기간의 상세 수치와 비율을 내보냅니다.</div>
-</aside>
+
 
 <script>
 let appData = { annual: [], halfyear: [], quarterly: [] };
