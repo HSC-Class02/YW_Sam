@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      DART_API_KEY_CONFIGURED: ${{ secrets.OPENDART_API_KEY != '' }}
+      # Support both secret names used by this project.
+      DART_API_KEY_CONFIGURED: ${{ secrets.OPENDART_API_KEY != '' || secrets.DART_API_KEY != '' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -51,14 +52,40 @@ jobs:
       - name: Collect OpenDART financial data
         if: ${{ env.DART_API_KEY_CONFIGURED == 'true' }}
         env:
-          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY || secrets.DART_API_KEY }}
         run: python scripts/update_financials.py
+
+      - name: Validate collected financial data
+        if: ${{ env.DART_API_KEY_CONFIGURED == 'true' }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          metrics = json.loads(Path("data/metrics.json").read_text(encoding="utf-8"))
+          counts = {
+              "annual": len(metrics.get("annual") or []),
+              "halfyear": len(metrics.get("halfyear") or []),
+              "quarterly": len(metrics.get("quarterly") or []),
+          }
+          total = sum(counts.values())
+          print("Collected records:", counts)
+          if total == 0:
+              raise SystemExit(
+                  "ERROR: OpenDART returned no financial records. "
+                  "Check the API key, company code, API quota, and crawler log."
+              )
+          if metrics.get("company") != "삼성전자" or metrics.get("stock_code") != "005930":
+              raise SystemExit("ERROR: The generated dataset does not match Samsung Electronics (005930).")
+          if metrics.get("data_status") != "정상 수집":
+              raise SystemExit("ERROR: The generated dataset is not marked as successfully collected.")
+          PY
 
       - name: Explain missing API secret
         if: ${{ env.DART_API_KEY_CONFIGURED != 'true' }}
         run: |
-          echo "::warning::OPENDART_API_KEY is not configured. The dashboard will deploy, but financial data will remain empty until the secret is added."
-          echo "Add OPENDART_API_KEY in Settings > Secrets and variables > Actions, then run this workflow manually."
+          echo "::warning::Neither OPENDART_API_KEY nor DART_API_KEY is configured. The dashboard UI will deploy, but financial data will remain empty."
+          echo "Add the OpenDART key as a repository or github-pages environment Actions secret named OPENDART_API_KEY (recommended) or DART_API_KEY, then run this workflow manually."
 
       - name: Commit refreshed data
         if: ${{ env.DART_API_KEY_CONFIGURED == 'true' }}
