@@ -6,6 +6,7 @@ name: Update and Deploy
       - main
     paths-ignore:
       - "README.md"
+      - "data/**"
   workflow_dispatch:
   schedule:
     # 00:20 UTC on the first day of each month (09:20 in Korea)
